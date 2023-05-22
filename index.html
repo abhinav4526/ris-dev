@@ -7,8 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <h1>Hiya!</h1>
-    </div>
+    <div id="root"></div>
+    <script>
+        const heading = document.createElement("h1");
+        heading.innerHTML = "Hey Jst warming up!"
+        const root = document.getElementById("root");
+        root.appendChild(heading)
+    </script>
 </body>
 </html>
