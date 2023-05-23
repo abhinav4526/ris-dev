@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement(
-    "div",
-    { id: "child1" },
-    React.createElement("h1", {}, "Hello RRRRRRR !"),
-    React.createElement("h2", {}, "Hello rrrrrrr !")
-  ),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "Hello RRRRRRRR !"),
-    React.createElement("h2", {}, "Hello rrrrrrrr !"),
-  ]),
-]);
+const parent = (
+  <div id="parent">
+    <div id="child1">
+      <h1>It's h1</h1>
+      <h2>It's h2</h2>
+    </div>
+    <div id="child2">
+      <h1>It's h1 again</h1>
+      <h2>It's h2 again</h2>
+    </div>
+  </div>
+);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(parent);
