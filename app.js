@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = (
+const Parent = () => (
   <div id="parent">
     <div id="child1">
       <h1>It's h1</h1>
@@ -13,5 +13,7 @@ const parent = (
     </div>
   </div>
 );
+
+console.log(<Parent />);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(<Parent />);
