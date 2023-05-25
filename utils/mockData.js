@@ -1,4 +1,4 @@
-export const dataList = [
+export const resList = [
   {
     type: "restaurant",
     data: {

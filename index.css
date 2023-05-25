@@ -24,8 +24,12 @@
     
 }
 
-.search {
+.filter {
     padding: 10px;
+}
+
+.filter-btn:hover{
+    cursor: pointer;
 }
 
 .res-container{
@@ -41,6 +45,7 @@
 
 .res-card:hover {
     border: 1px solid black;
+    cursor:pointer;
 }
 
 .res-image {
