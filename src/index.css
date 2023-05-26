@@ -32,6 +32,15 @@
     cursor: pointer;
 }
 
+.filter-search-bar{
+    float: right;
+}
+
+.filter-search-btn {
+    cursor: pointer;
+    float: right;
+}
+
 .res-container{
     display: flex;
     flex-wrap: wrap;
