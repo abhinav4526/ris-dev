@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RestaurantCard } from "./restaurantCard";
 import { resList } from "../utils/mockData";
 
 const Body = () => {
   const [dataList, setDataList] = useState(resList);
   const [dataListSearch, setDataListSearch] = useState("");
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.528913&lng=73.87441989999999&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    setDataList(json?.data?.cards[2]?.data?.data?.cards);
+  };
   return (
     <div className="body">
       <div className="filter">
@@ -31,9 +41,10 @@ const Body = () => {
           onClick={() => {
             if (dataListSearch.length !== 0) {
               setDataList(
-                dataList.filter(
-                  (res) =>
-                    res.data.name.toLowerCase() === dataListSearch.toLowerCase()
+                dataList.filter((res) =>
+                  res.data.name
+                    .toLowerCase()
+                    .includes(dataListSearch.toLowerCase())
                 )
               );
             }

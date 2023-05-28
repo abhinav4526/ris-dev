@@ -11,6 +11,7 @@
 
 .nav-items {
     padding: 0px 20px;
+    display: flex ;
 }
 
 .nav-items > ul {
@@ -22,6 +23,16 @@
 .nav-items > ul > li {
     padding : 10px;
     
+}
+
+.login-container{
+    display: flex;
+    align-items: center;
+}
+
+.login-btn{
+    cursor: pointer;
+    height: 50px;
 }
 
 .filter {
