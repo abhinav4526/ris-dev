@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { RestaurantCard } from "./restaurantCard";
-import { resList } from "../utils/mockData";
+import Shimmer from "./shimmer";
 
 const Body = () => {
-  const [dataList, setDataList] = useState(resList);
+  const [dataList, setDataList] = useState([]);
+  const [filteredDataList, setFiteredDataList] = useState([]);
   const [dataListSearch, setDataListSearch] = useState("");
   useEffect(() => {
     getData();
@@ -14,8 +15,12 @@ const Body = () => {
     );
     const json = await data.json();
     setDataList(json?.data?.cards[2]?.data?.data?.cards);
+    setFiteredDataList(json?.data?.cards[2]?.data?.data?.cards);
   };
-  return (
+
+  return dataList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
@@ -40,7 +45,7 @@ const Body = () => {
           className="filter-search-btn"
           onClick={() => {
             if (dataListSearch.length !== 0) {
-              setDataList(
+              setFiteredDataList(
                 dataList.filter((res) =>
                   res.data.name
                     .toLowerCase()
@@ -52,9 +57,18 @@ const Body = () => {
         >
           Search
         </button>
+        <button
+          className="filter-reset-btn"
+          onClick={() => {
+            setFiteredDataList(dataList);
+            setDataListSearch("");
+          }}
+        >
+          Reset
+        </button>
       </div>
       <div className="res-container">
-        {dataList.map((restaurant) => (
+        {filteredDataList.map((restaurant) => (
           <RestaurantCard key={restaurant.data.id} dataInstance={restaurant} />
         ))}
       </div>
