@@ -1,7 +1,10 @@
 import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import Header from "./components/header";
 import Body from "./components/body";
+import About from "./components/about";
+import Error from "./components/error";
 
 const AppLayout = () => {
   return (
@@ -11,5 +14,17 @@ const AppLayout = () => {
   );
 };
 
+const appRoute = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRoute} />);
